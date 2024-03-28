@@ -1,17 +1,37 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+
+interface AdviceTypes {
+  slip: {
+    id: number;
+    advice: string;
+  };
+}
 function App() {
+  const [advice, setAdvice] = useState<AdviceTypes>();
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`https://api.adviceslip.com/advice`);
+        const data = await res.json();
+        if (!data) throw new Error(`Something went wrong`);
+        setAdvice(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [count]);
   return (
     <Container>
-      <Heading>ADVICE # 117</Heading>
-      <Paragraph>
-        “It is easy to sit up and take notice, what's difficult is getting up
-        and taking action.”
-      </Paragraph>
-      <Div>
+      <Heading>ADVICE # {advice?.slip.id}</Heading>
+      <Paragraph>"{advice?.slip.advice}"</Paragraph>
+      <DivImage>
         <img src="/images/image1.png" alt="iconImage" />
-      </Div>
-      <Div>
-        <img src="/images/image2.png" alt="buttonIcon" className="Image" />
+      </DivImage>
+      <Div onClick={() => setCount((prev) => prev + 1)}>
+        <img src="/images/image2.png" alt="buttonIcon" />
       </Div>
     </Container>
   );
@@ -41,10 +61,18 @@ const Paragraph = styled.p`
   padding-top: 30px;
   padding-bottom: 30px;
 `;
+const DivImage = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 const Div = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  cursor: pointer;
+  & :hover {
+    box-shadow: 0px 0px 40px 0px #53ffaa;
+  }
 `;
 
 export default App;
