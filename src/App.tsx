@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 function App() {
   return (
     <Container>
@@ -8,6 +7,12 @@ function App() {
         “It is easy to sit up and take notice, what's difficult is getting up
         and taking action.”
       </Paragraph>
+      <Div>
+        <img src="/images/image1.png" alt="iconImage" />
+      </Div>
+      <Div>
+        <img src="/images/image2.png" alt="buttonIcon" className="Image" />
+      </Div>
     </Container>
   );
 }
@@ -17,6 +22,7 @@ const Container = styled.div`
   background: #313a48;
   border-radius: 10px;
   padding: 30px;
+  position: relative;
 `;
 const Heading = styled.h1`
   font-size: 11px;
@@ -33,6 +39,12 @@ const Paragraph = styled.p`
   text-align: center;
   color: #cee3e9;
   padding-top: 30px;
+  padding-bottom: 30px;
+`;
+const Div = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 `;
 
 export default App;
