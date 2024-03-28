@@ -10,6 +10,9 @@ body{
     font-family: "Manrope", sans-serif;
     min-height: 100vh;
     background-color: darkcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 `;
 
