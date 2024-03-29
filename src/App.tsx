@@ -38,7 +38,6 @@ function App() {
 }
 const Container = styled.div`
   width: 343px;
-  height: 315px;
   background: #313a48;
   border-radius: 10px;
   padding: 30px;
@@ -64,15 +63,15 @@ const Paragraph = styled.p`
 const DivImage = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 `;
 const Div = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  border-radius: 50%;
   cursor: pointer;
-  & :hover {
-    box-shadow: 0px 0px 40px 0px #53ffaa;
-  }
 `;
 
 export default App;
